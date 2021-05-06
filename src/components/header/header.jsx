@@ -1,10 +1,36 @@
 import React from 'react'
 import './header.scss'
 
+import { FaBars } from 'react-icons/fa'
+import { AiOutlineSearch } from 'react-icons/ai'
+import { MdNotifications, MdApps } from 'react-icons/md'
+
+
 const Header = () => {
     return (
-        <div>
-            header
+        <div className="border border-dark header">
+            <FaBars
+                className='header-menu'
+                size={26}
+            />
+
+            <img src='http://pngimg.com/uploads/youtube/youtube_PNG2.png' alt='' className='header-logo' />
+
+            <form >
+                <input type='text' placeholder='search' />
+                <button type='submit'>
+                    <AiOutlineSearch size={22} />
+                </button>
+            </form>
+
+            <div className='header-icons'>
+                <MdNotifications size={28} />
+                <MdApps size={28} />
+                <img
+                    src="https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png"
+                    alt='avatar'
+                />
+            </div>
         </div>
     )
 }

@@ -1,13 +1,11 @@
 import React from 'react'
-import './categoriesBar.scss'
 
-const categoriesBar = () => {
+const CategoriesBar = () => {
     return (
         <div>
-        categoriesBar
-        
+            CategoriesBar
         </div>
     )
 }
 
-export default categoriesBar
+export default CategoriesBar
