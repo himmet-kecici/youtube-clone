@@ -10,7 +10,17 @@ const keywords = [
     'react',
     'redux',
     'basketball',
-    'music'
+    'music',
+    'drum',
+    'guitar',
+    'Rock',
+    'Rap',
+    'ambience',
+    'popular',
+    'trend',
+    'premium',
+    'sport',
+    'movie trailer'
 
 ]
 
@@ -23,8 +33,8 @@ const CategoriesBar = () => {
     return (
         <div className='categories-bar'>
             {keywords.map((item, index) => <span
-                className={activeElement === item ? 'active' : ''}
                 onClick={() => setActiveElement(item)}
+                className={activeElement === item ? 'active' : ''}
                 key={index}>{item}</span>)}
         </div>
     )

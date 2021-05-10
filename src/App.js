@@ -12,17 +12,17 @@ const App = () => {
     const handleToggleSidebar = () => toggleSidebar(value => !value)
 
     return (
-        <div>
+        <>
 
             <Header handleToggleSidebar={handleToggleSidebar} />
-            <div className='app-container border border-info'>
+            <div className='app-container '>
                 <Sidebar sidebar={sidebar} handleToggleSidebar={handleToggleSidebar} />
 
-                <Container fluid className='app-main border border-warning' >
+                <Container fluid className='app-main' >
                     <Homepage />
                 </Container>
             </div>
-        </div>
+        </>
     )
 }
 
