@@ -4,6 +4,7 @@ import Header from './components/header/header'
 import Sidebar from './components/sidebar/sidebar'
 import Homepage from './pages/homepage/homepage'
 import './app.scss'
+import Loginpage from './pages/loginpage/loginpage'
 
 const App = () => {
 
@@ -12,17 +13,18 @@ const App = () => {
     const handleToggleSidebar = () => toggleSidebar(value => !value)
 
     return (
-        <>
+        // <div>
 
-            <Header handleToggleSidebar={handleToggleSidebar} />
-            <div className='app-container '>
-                <Sidebar sidebar={sidebar} handleToggleSidebar={handleToggleSidebar} />
+        //     <Header handleToggleSidebar={handleToggleSidebar} />
+        //     <div className='app-container '>
+        //         <Sidebar sidebar={sidebar} handleToggleSidebar={handleToggleSidebar} />
 
-                <Container fluid className='app-main' >
-                    <Homepage />
-                </Container>
-            </div>
-        </>
+        //         <Container fluid className='app-main' >
+        //             <Homepage />
+        //         </Container>
+        //     </div>
+        // </div>
+        <Loginpage />
     )
 }
 
