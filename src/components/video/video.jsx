@@ -22,7 +22,7 @@ const Video = () => {
 
                         lorem ipsum dolor
 
-            </div>
+                    </div>
                     <div className="container-channel">
 
                         <p>Rainbow Hat Jr</p>
@@ -30,7 +30,7 @@ const Video = () => {
                     <div className="container-details">
                         <span>
                             3m Views •
-            </span>
+                        </span>
                         <span> 3 days ago</span>
                     </div>
                 </div>

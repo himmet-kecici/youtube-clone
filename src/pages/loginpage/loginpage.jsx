@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { login } from '../../redux/auth/actions'
+import { login } from '../../redux/auth/auth.actions'
 import './loginpage.scss'
 
 
