@@ -1,5 +1,6 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { login } from '../../redux/auth/auth.actions'
 import './loginpage.scss'
 
@@ -7,11 +8,21 @@ import './loginpage.scss'
 const Loginpage = () => {
 
     const dispatch = useDispatch()
+    const accessToken = useSelector(state => state.auth.accessToken)
 
     const handleLogin = () => {
-        console.log('start onclick')
         dispatch(login())
     }
+
+    const history = useHistory()
+
+
+    useEffect(() => {
+        if (accessToken) {
+            history.push('/')
+        }
+
+    }, [accessToken, history])
 
     return (
         <div className="login">

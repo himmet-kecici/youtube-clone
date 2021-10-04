@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container } from 'react-bootstrap'
 import Header from './components/header/header'
 import Sidebar from './components/sidebar/sidebar'
@@ -6,7 +6,8 @@ import Homepage from './pages/homepage/homepage'
 import './app.scss'
 import Loginpage from './pages/loginpage/loginpage'
 
-import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
+import { useHistory, Redirect, Route, Switch } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const Layout = ({ children }) => {
 
@@ -30,30 +31,41 @@ const Layout = ({ children }) => {
 
 const App = () => {
 
+    const { accessToken, loading } = useSelector(state => state.auth)
+
+    const history = useHistory()
+
+    useEffect(() => {
+
+        if (!loading && !accessToken) {
+            history.push('/auth')
+        }
+
+    }, [accessToken, loading, history])
 
     return (
-        <Router>
-            <Switch>
-                <Route path='/' exact>
-                    <Layout>
-                        <Homepage />
-                    </Layout>
-                </Route>
 
-                <Route path='/auth'>
-                    <Loginpage />
-                </Route>
+        <Switch>
+            <Route path='/' exact>
+                <Layout>
+                    <Homepage />
+                </Layout>
+            </Route>
 
-                <Route path='/search' >
-                    <Layout>
-                        <h1> Search</h1>
-                    </Layout>
-                </Route>
-                <Route>
-                    <Redirect to='/' />
-                </Route>
-            </Switch>
-        </Router>
+            <Route path='/auth'>
+                <Loginpage />
+            </Route>
+
+            <Route path='/search' >
+                <Layout>
+                    <h1> Search</h1>
+                </Layout>
+            </Route>
+            <Route>
+                <Redirect to='/' />
+            </Route>
+        </Switch>
+
 
     )
 }

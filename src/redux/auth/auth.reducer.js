@@ -1,8 +1,8 @@
 import { LOAD_PROFILE, LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS } from '../actionTypes'
 
 const initialState = {
-    accessToken: null,
-    user: null,
+    accessToken: sessionStorage.getItem('youtube-access-token') ? sessionStorage.getItem('youtube-access-token') : null,
+    user: sessionStorage.getItem('youtube-user') ? JSON.parse(sessionStorage.getItem('youtube-user')) : null,
     loading: false
 
 }
