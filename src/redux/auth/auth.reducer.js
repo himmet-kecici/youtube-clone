@@ -1,4 +1,4 @@
-import { LOAD_PROFILE, LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS } from '../actionTypes'
+import { LOAD_PROFILE, LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOG_OUT } from '../actionTypes'
 
 const initialState = {
     accessToken: sessionStorage.getItem('youtube-access-token') ? sessionStorage.getItem('youtube-access-token') : null,
@@ -35,6 +35,12 @@ export const AuthReducer = (state = initialState, action) => {
             return {
                 ...state,
                 user: payload
+            }
+        case LOG_OUT:
+            return {
+                ...state,
+                accessToken: null,
+                user: null
             }
         default:
             return state

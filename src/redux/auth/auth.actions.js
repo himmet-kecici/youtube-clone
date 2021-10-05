@@ -1,6 +1,6 @@
 import firebase from 'firebase/app'
 import auth from '../../firebase/firebase.utils'
-import { LOAD_PROFILE, LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS } from '../actionTypes'
+import { LOAD_PROFILE, LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOG_OUT } from '../actionTypes'
 
 export const login = () => async dispatch => {
     try {
@@ -10,6 +10,9 @@ export const login = () => async dispatch => {
         })
 
         const provider = new firebase.auth.GoogleAuthProvider()
+
+        provider.addScope('https://www.googleapis.com/auth/youtube.force-ssl')
+
         const res = await auth.signInWithPopup(provider)
         console.log(res)
 
@@ -38,4 +41,15 @@ export const login = () => async dispatch => {
             payload: error.message
         })
     }
+}
+
+export const logout = () => async dispatch => {
+
+    await auth.signOut()
+    dispatch({
+        type: LOG_OUT,
+    })
+    sessionStorage.removeItem('youtube-access-token')
+    sessionStorage.removeItem('youtube-user')
+
 }
