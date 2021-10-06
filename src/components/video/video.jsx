@@ -1,12 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './video.scss'
 
-const Video = () => {
+const Video = ({ video }) => {
+
+    const {
+        id,
+        snippet: {
+            channelId,
+            channelTitle,
+            title,
+            publishedAt,
+            thumbnails: { medium },
+        }
+    } = video
+
+
     return (
         <div className="video">
             <div className="video-top">
 
-                <img src="https://i.ytimg.com/vi/DyvDXY1aAzA/hq720.jpg?sqp=-oaymwEZCNAFEJQDSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBjpnqIpRrltzJ0EcbXRi8N2HtCWQ" alt="" />
+                <img src={medium.url} alt="" />
                 <span>05:34</span>
 
             </div>

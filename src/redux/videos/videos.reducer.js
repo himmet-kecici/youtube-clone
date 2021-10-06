@@ -1,10 +1,11 @@
 import { HOME_VIDEOS_FAIL, HOME_VIDEOS_REQUEST, HOME_VIDEOS_SUCCESS } from "../actionTypes"
 
-export const homeVideosReducer = (state = {
+const initialState = {
     videos: [],
     loading: false,
     nextPageToken: null
-}, action) => {
+}
+export const homeVideosReducer = (state = initialState, action) => {
 
     const { type, payload } = action
 
