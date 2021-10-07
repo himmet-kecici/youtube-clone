@@ -19,7 +19,6 @@ const Homepage = () => {
 
 
 
-
     return (
         <div>
             <CategoriesBar />

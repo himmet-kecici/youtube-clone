@@ -16,10 +16,8 @@ export const getPopularVideos = () => async dispatch => {
                 regionCode: 'TR',
                 maxResults: 20,
                 pageToken: '',
-
             }
         })
-
         dispatch({
             type: HOME_VIDEOS_SUCCESS,
             payload: {
@@ -27,8 +25,6 @@ export const getPopularVideos = () => async dispatch => {
                 nextPageToken: data.nextPageToken
             }
         })
-
-
     } catch (error) {
         console.log(error.massage)
         dispatch({

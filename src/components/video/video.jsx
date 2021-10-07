@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './video.scss'
-
+import request from "../../api"
+import moment from 'moment'
+import numeral from 'numeral'
 const Video = ({ video }) => {
 
     const {
@@ -14,37 +16,73 @@ const Video = ({ video }) => {
         }
     } = video
 
+    const [views, setViews] = useState(null)
+    const [duration, setDuration] = useState(null)
+    const [channelIcon, setChannelIcon] = useState(null)
+
+    const seconds = moment.duration(duration).asSeconds()
+    const _duration = moment.utc(seconds * 1000).format('mm:ss')
+
+    useEffect(() => {
+        const get_video_details = async () => {
+            const {
+                data: { items },
+            } = await request('/videos', {
+                params: {
+                    part: 'contentDetails,statistics',
+                    id: id,
+                },
+            })
+            setDuration(items[0].contentDetails.duration)
+            setViews(items[0].statistics.viewCount)
+        }
+        get_video_details()
+    }, [id])
+
+    useEffect(() => {
+        const get_channel_icon = async () => {
+            const {
+                data: { items },
+            } = await request('/channels', {
+                params: {
+                    part: 'snippet',
+                    id: channelId,
+                },
+            })
+            setChannelIcon(items[0].snippet.thumbnails.default)
+
+        }
+        get_channel_icon()
+    }, [channelId])
 
     return (
         <div className="video">
             <div className="video-top">
 
                 <img src={medium.url} alt="" />
-                <span>05:34</span>
+                <span>{_duration}</span>
 
             </div>
             <div className='video-container'>
                 <div className='video-logo'>
                     <img
-                        src='https://yt3.ggpht.com/a-/AOh14GixdVjxqi11Md_OCDd3K7SOQEhizq4f3EI_0g=s68-c-k-c0x00ffffff-no-rj-mo'
+                        src={channelIcon?.url}
                         alt=''
                     />
                 </div>
                 <div className='video-items'>
                     <div className="container-title">
-
-                        lorem ipsum dolor
-
+                        {title}
                     </div>
                     <div className="container-channel">
 
-                        <p>Rainbow Hat Jr</p>
+                        <p>{channelTitle}</p>
                     </div>
                     <div className="container-details">
                         <span>
-                            3m Views •
+                            {numeral(views).format('0.a')} Views •
                         </span>
-                        <span> 3 days ago</span>
+                        <span> {moment(publishedAt).fromNow()}</span>
                     </div>
                 </div>
             </div>
