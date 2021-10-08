@@ -15,7 +15,7 @@ const Homepage = () => {
 
     }, [dispatch])
 
-    const { videos } = useSelector(state => state.homeVideosReducer)
+    const { videos } = useSelector(state => state.homeVideos)
 
 
 

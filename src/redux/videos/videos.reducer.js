@@ -3,7 +3,8 @@ import { HOME_VIDEOS_FAIL, HOME_VIDEOS_REQUEST, HOME_VIDEOS_SUCCESS } from "../a
 const initialState = {
     videos: [],
     loading: false,
-    nextPageToken: null
+    nextPageToken: null,
+    activeCategory: 'All'
 }
 export const homeVideosReducer = (state = initialState, action) => {
 
@@ -15,7 +16,8 @@ export const homeVideosReducer = (state = initialState, action) => {
                 ...state,
                 videos: payload.videos,
                 loading: false,
-                nextPageToken: payload.nextPageToken
+                nextPageToken: payload.nextPageToken,
+                activeCategory: payload.category
 
             }
         case HOME_VIDEOS_FAIL:
