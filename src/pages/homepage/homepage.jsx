@@ -17,19 +17,32 @@ const Homepage = () => {
 
     const { videos } = useSelector(state => state.homeVideos)
 
-
+    const fetchData = () => {
+        dispatch(getPopularVideos())
+    }
 
     return (
         <div>
-            <CategoriesBar />
             <Container>
-                <Row>
-                    {videos.map((video) => (
-                        <Col lg={3} md={4} key={video.id}>
-                            <Video video={video} />
-                        </Col>
-                    ))}
-                </Row>
+                <CategoriesBar />
+                <InfiniteScroll
+                    dataLength={videos.length}
+                    next={fetchData}
+                    hasMore={true}
+                    loader={
+                        <div className="spinner-border text-danger d-block mx-auto">
+
+                        </div>
+                    }
+                >
+                    <Row>
+                        {videos.map((video) => (
+                            <Col lg={3} md={4} key={video.id}>
+                                <Video video={video} />
+                            </Col>
+                        ))}
+                    </Row>
+                </InfiniteScroll>
             </Container>
         </div >
     )
