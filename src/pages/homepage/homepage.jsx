@@ -25,9 +25,10 @@ const Homepage = () => {
             dispatch(getVideosByCategory(activeCategory))
         }
     }
-
+    
     return (
-        <div>
+
+        < div >
             <Container>
                 <CategoriesBar />
                 <InfiniteScroll
