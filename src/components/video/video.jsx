@@ -3,6 +3,7 @@ import './video.scss'
 import request from "../../api"
 import moment from 'moment'
 import numeral from 'numeral'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 const Video = ({ video }) => {
 
     const {
@@ -61,16 +62,16 @@ const Video = ({ video }) => {
         <div className="video">
             <div className="video-top">
 
-                <img src={medium.url} alt="" />
-                <span>{_duration}</span>
+                {  /*<img src={medium.url} alt="" />*/}
+                <LazyLoadImage src={medium.url} effect='blur' />
+                <span className='video-top-duration'>{_duration}</span>
 
             </div>
             <div className='video-container'>
                 <div className='video-logo'>
-                    <img
-                        src={channelIcon?.url}
-                        alt=''
-                    />
+                    { /* <img src={channelIcon?.url} alt=''/> */}
+                    <LazyLoadImage src={channelIcon?.url} effect='blur' />
+
                 </div>
                 <div className='video-items'>
                     <div className="container-title">
