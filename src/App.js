@@ -6,8 +6,11 @@ import Homepage from './pages/homepage/homepage'
 import './app.scss'
 import Loginpage from './pages/loginpage/loginpage'
 
+
 import { useHistory, Redirect, Route, Switch } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import Watchpage from './pages/watchpage/watchpage'
+
 
 const Layout = ({ children }) => {
 
@@ -61,6 +64,12 @@ const App = () => {
                     <h1> Search</h1>
                 </Layout>
             </Route>
+            <Route path='/watch/:id' >
+                <Layout>
+                    <Watchpage />
+                </Layout>
+            </Route>
+
             <Route>
                 <Redirect to='/' />
             </Route>

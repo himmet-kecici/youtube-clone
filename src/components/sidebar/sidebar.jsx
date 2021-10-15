@@ -11,6 +11,7 @@ import {
 import { useDispatch } from 'react-redux'
 import { logout } from '../../redux/auth/auth.actions'
 
+
 const Sidebar = ({ sidebar, handleToggleSidebar }) => {
 
     const dispatch = useDispatch()
@@ -52,6 +53,8 @@ const Sidebar = ({ sidebar, handleToggleSidebar }) => {
                 <MdExitToApp size={23} />
                 <span>log out</span>
             </li>
+
+
 
             <hr />
         </nav>
