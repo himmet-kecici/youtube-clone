@@ -9,7 +9,7 @@ import Loginpage from './pages/loginpage/loginpage'
 
 import { useHistory, Redirect, Route, Switch } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import Watchpage from './pages/watchpage/watchpage'
+import WatchingPage from './pages/watchingPage/watchingPage'
 
 
 const Layout = ({ children }) => {
@@ -66,7 +66,7 @@ const App = () => {
             </Route>
             <Route path='/watch/:id' >
                 <Layout>
-                    <Watchpage />
+                    <WatchingPage />
                 </Layout>
             </Route>
 
