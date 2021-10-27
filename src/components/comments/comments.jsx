@@ -11,7 +11,7 @@ const Comments = () => {
     return (
         <div className='comments'>
             <p>234234 comments</p>
-            <div className='comment-form d-flex w-100 my-2'>
+            <div className='comments-form d-flex w-100 my-2'>
                 <img src="https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png"
                     alt=""
                     className='rounded-circle mr-3 '

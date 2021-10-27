@@ -1,4 +1,6 @@
 import React from 'react'
+import './comment.scss'
+
 import moment from 'moment'
 
 const Comment = () => {
@@ -9,10 +11,10 @@ const Comment = () => {
                 className='rounded-circle mr-3' />
 
             <div className='comment-body'>
-                <p className='commet-header'>
+                <p className='commet-header '>
                     | name surname • {moment('2021-09-09').fromNow()}
                 </p>
-                <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                <p className='mb-0' >Lorem ipsum dolor sit amet, consectetur...</p>
             </div>
         </div>
     )
