@@ -64,7 +64,7 @@ const App = () => {
                     <h1> Search</h1>
                 </Layout>
             </Route>
-            <Route path='/watch/:id' >
+            <Route path='/watch:id' >
                 <Layout>
                     <WatchingPage />
                 </Layout>

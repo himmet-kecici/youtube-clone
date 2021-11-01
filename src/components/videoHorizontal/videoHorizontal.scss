@@ -76,11 +76,6 @@
         font-size: 0.8rem;
       }
     }
-
-    &-desc {
-      display: none;
-    }
-
     &-title {
       font-size: 0.9rem;
       @include line-clamp(1);
