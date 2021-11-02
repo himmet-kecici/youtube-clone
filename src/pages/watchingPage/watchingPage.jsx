@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Col, Row } from 'react-bootstrap'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import Comments from '../../components/comments/comments'
 import VideoData from '../../components/videoData/videoData'
@@ -20,11 +20,13 @@ const WatchingPage = () => {
         dispatch(getVideoById(id))
     }, [dispatch, id])
 
+    const { video, loading } = useSelector(state => state.selectedVideo)
+
     return <Row>
         <Col lg={8}>
             <div className='watchpage-player'>
                 <iframe src={`https://www.youtube.com/embed/${id}`}
-                    title='my video'
+                    title={video?.snippet?.title}
                     frameBorder='0'
                     allowFullScreen
                     width="100%"
@@ -32,7 +34,11 @@ const WatchingPage = () => {
                 >
                 </iframe>
             </div>
-            <VideoData />
+            {
+                !loading ? <VideoData video={video} videoId={id} /> : <h6>loading..</h6>
+            }
+
+
             <Comments />
         </Col>
 
