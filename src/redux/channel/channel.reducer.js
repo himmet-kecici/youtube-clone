@@ -1,8 +1,9 @@
-import { CHANNEL_DETAILS_FAIL, CHANNEL_DETAILS_REQUEST, CHANNEL_DETAILS_SUCCESS } from "../actionTypes"
+import { CHANNEL_DETAILS_FAIL, CHANNEL_DETAILS_REQUEST, CHANNEL_DETAILS_SUCCESS, SET_SUBSCRIPTION_STATUS } from "../actionTypes"
 
 const initialState = {
     loading: true,
     channel: {},
+    subscriptionStatus: false
 }
 
 
@@ -27,6 +28,11 @@ export const channelDetailsReducer = (state = initialState, action) => {
                 channel: null,
                 loading: false,
                 error: payload
+            }
+        case SET_SUBSCRIPTION_STATUS:
+            return {
+                ...state,
+                subscriptionStatus: payload
             }
         default:
             return {
