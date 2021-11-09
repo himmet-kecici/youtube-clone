@@ -6,13 +6,14 @@ import thunk from 'redux-thunk'
 import { homeVideosReducer } from './videos/videos.reducer'
 import { selectedVideoReducer } from './videos/videos.reducer'
 import { channelDetailsReducer } from './channel/channel.reducer'
-
+import { commentListReducer } from './comments/comments.reducer'
 
 const rootReducer = combineReducers({
     auth: AuthReducer,
     homeVideos: homeVideosReducer,
     selectedVideo: selectedVideoReducer,
-    channelDetails: channelDetailsReducer
+    channelDetails: channelDetailsReducer,
+    commentsList: commentListReducer
 
 })
 

@@ -10,7 +10,6 @@ const initialState = {
 export const channelDetailsReducer = (state = initialState, action) => {
     const { payload, type } = action
     switch (type) {
-
         case CHANNEL_DETAILS_REQUEST:
             return {
                 ...state,
