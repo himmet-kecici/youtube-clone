@@ -39,7 +39,7 @@ const WatchingPage = () => {
             }
 
 
-            <Comments videoId={id} />
+            <Comments videoId={id} totalComments={video?.statistics?.commentCount} />
         </Col>
 
         <Col lg={4}>
