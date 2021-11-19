@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import Comments from '../../components/comments/comments'
 import VideoData from '../../components/videoData/videoData'
 import VideoHorizontal from '../../components/videoHorizontal/videoHorizontal'
-import { getVideoById } from '../../redux/videos/videos.actions'
+import { getRelatedVideos, getVideoById } from '../../redux/videos/videos.actions'
 import './watchingPage.scss'
 
 
@@ -18,9 +18,13 @@ const WatchingPage = () => {
 
     useEffect(() => {
         dispatch(getVideoById(id))
+
+        dispatch(getRelatedVideos(id))
     }, [dispatch, id])
 
     const { video, loading } = useSelector(state => state.selectedVideo)
+
+    const { videos, loading: relatedVideosLoading } = useSelector(state => state.relatedVideos)
 
     return <Row>
         <Col lg={8}>
@@ -46,7 +50,7 @@ const WatchingPage = () => {
 
             {
 
-                [...Array(10)].map(() => <VideoHorizontal />)
+                !loading && videos?.filter(video => video.snippet).map((video) => <VideoHorizontal video={video} key={video.id.videoId} />)
             }
         </Col>
     </Row >
