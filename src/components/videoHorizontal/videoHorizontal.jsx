@@ -5,6 +5,7 @@ import moment from 'moment'
 import numeral from 'numeral'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { Col, Row } from 'react-bootstrap'
+import { useHistory } from 'react-router'
 
 
 const VideoHorizontal = ({ video }) => {
@@ -42,16 +43,20 @@ const VideoHorizontal = ({ video }) => {
     const seconds = moment.duration(duration).asSeconds()
     const _duration = moment.utc(seconds * 1000).format('mm:ss')
 
+    const history = useHistory()
+    const handleClick = () => {
+        history.push(`/watch${id.videoId}`)
+    }
     return (
-        <Row className="videoHorizontal m-1 py-1 align-items-center">
-            <Col xs={6} md={4} className='videoHorizontal-left'>
+        <Row className="videoHorizontal m-1 py-1 align-items-center" onClick={handleClick}>
+            <Col xs={6} md={6} className='videoHorizontal-left'>
                 <LazyLoadImage src={medium.url}
                     effect='blur'
                     className='videoHorizontal-thumbnail'
                     wrapperClassName='videoHorizontal-thumbnail-wrapper' />
-                <span className='video-top-duration'>{_duration}</span>
+                <span className='videoHorizontal-duration'>{_duration}</span>
             </Col>
-            <Col xs={6} md={8} className='videoHorizontal-right p-0'>
+            <Col xs={6} md={6} className='videoHorizontal-right p-0'>
                 <p className='videoHorizontal-title mb-1'> {title}</p>
                 <div className='videoHorizontal-details'>
 
@@ -60,7 +65,7 @@ const VideoHorizontal = ({ video }) => {
                     {moment(publishedAt).fromNow()}
                 </div>
                 <div className='videoHorizontal-channel d-flex align-item-center my-1'>
-                    <p>{channelTitle}</p>
+                    <p className='mb-0'>{channelTitle}</p>
                 </div>
             </Col>
         </Row >
